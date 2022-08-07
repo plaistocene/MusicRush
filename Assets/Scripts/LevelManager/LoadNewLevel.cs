@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadNewLevel : MonoBehaviour
 {
@@ -8,17 +10,13 @@ public class LoadNewLevel : MonoBehaviour
 
     #region Unity Methods
 
-    // Start is called before the first frame update
-    private void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-    
     #endregion
 }
