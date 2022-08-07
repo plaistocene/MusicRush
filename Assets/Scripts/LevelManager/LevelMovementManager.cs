@@ -20,7 +20,7 @@ public class LevelMovementManager : MonoBehaviour
     {
         if (PlayerStats.IsGameStarted())
         {
-            transform.Translate(Vector3.back * (playerStats.roadSpeed * Time.deltaTime));
+            transform.Translate(Vector3.back * (playerStats.GetRoadSpeed() * Time.deltaTime));
         }
     }
 
