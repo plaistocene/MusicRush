@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerNoteCollector : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerNoteCollector : MonoBehaviour
 
     public List<GameObject> collectedNotes;
     public float noteOffset = 10f;
+
+    [Range(0f, 1f)] public float moveDuration;
 
     #endregion
 
@@ -22,27 +25,39 @@ public class PlayerNoteCollector : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
-        foreach (var note in collectedNotes)
+        if (collectedNotes.Count > 1)
         {
-            // note.transform.position
+            foreach (var note in collectedNotes)
+            {
+                var previousIndex = collectedNotes.IndexOf(note) - 1;
+                if (previousIndex >= 0)
+                {
+                    var previousTransform = collectedNotes[previousIndex].transform;
+                    var previousPosition = previousTransform.position;
+
+                    // TODO: make note position calculations based of each other
+                    if (note.gameObject.CompareTag("MusicNote"))
+                    {
+                        var previousForwardPosition = previousPosition.z + previousTransform.localScale.z * .5f;
+                        var noteZPosition = previousForwardPosition + note.transform.localScale.z * .5f + noteOffset;
+
+                        var endValue = new Vector3(previousPosition.x, previousPosition.y, noteZPosition);
+
+                        note.transform.DOMove(endValue, moveDuration).SetEase(Ease.InOutSine);
+                    }
+                }
+            }
         }
     }
 
     #endregion
 
-    private void OnCollisionEnter(Collision collision)
+    public void AddCollectedNotes(GameObject other)
     {
-        if (collision.gameObject.CompareTag("MusicNote"))
+        var isExisting = collectedNotes.IndexOf(other);
+        if (isExisting == -1)
         {
-            collectedNotes.Add(collision.gameObject);
-            var playerTransform = collectedNotes.Last().transform;
-            var position = playerTransform.position;
-            gameObject.transform.position = new Vector3(position.x, position.y, position.z + playerTransform.localScale.z + noteOffset);
+            collectedNotes.Add(other.gameObject);
         }
     }
 }
