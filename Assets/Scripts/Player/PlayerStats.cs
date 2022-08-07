@@ -7,8 +7,15 @@ public class PlayerStats : MonoBehaviour
 
     private static PlayerStats _instance;
 
-    public float forwardSpeed;
+    public float roadSpeed;
     public float horizontalSpeed;
+    private static bool _gameStarted;
+    
+    public float playerScale;
+    public float groundScale;
+    
+    public float movementLimitX;
+
 
     #endregion
 
@@ -32,6 +39,38 @@ public class PlayerStats : MonoBehaviour
 
         #endregion
     }
-
     #endregion
+
+    public void CalculateMovementLimitX()
+    {
+        playerScale = GameObject.Find("Player").GetComponent<Transform>().localScale.x;
+        groundScale = GameObject.Find("Ground").GetComponent<Transform>().localScale.x;
+
+        movementLimitX = (groundScale * .5f) - (playerScale * .5f);
+    }
+
+    public static void StartGame()
+    {
+        _gameStarted = true;
+    }
+
+    public static bool IsGameStarted()
+    {
+        return _gameStarted;
+    }
+
+    public float GetRoadSpeed()
+    {
+        return roadSpeed;
+    }
+
+    public float GetHorizontalSpeed()
+    {
+        return horizontalSpeed;
+    }
+
+    public float GetMovementLimitX()
+    {
+        return movementLimitX;
+    }
 }
