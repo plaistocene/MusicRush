@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 3055515677098491020}
   - component: {fileID: 3055515677098488693}
   - component: {fileID: 3055515677098491021}
-  - component: {fileID: 3055515677098491019}
   - component: {fileID: 3055515677098491017}
-  - component: {fileID: 3055515677098491018}
+  - component: {fileID: 3055515677102943095}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -100,7 +99,7 @@ Rigidbody:
   m_Drag: 25
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -117,19 +116,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3055515677098491019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3055515677098491010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c561819058ca2414abb7e3f23d935847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerVelocityController: {fileID: 3055515677098491018}
 --- !u!114 &3055515677098491017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,10 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb9d200e3184482c95b5a3644854923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVelocityController: {fileID: 3055515677098491018}
-  right: 0
-  left: 0
---- !u!114 &3055515677098491018
+  playerStats: {fileID: 0}
+  moveByTouch: 0
+--- !u!114 &3055515677102943095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,8 +139,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3055515677098491010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90116d1eeaabd4628a6fb97870a37ea6, type: 3}
+  m_Script: {fileID: 11500000, guid: 66f428758cdfd4d1a91ec2de7189084a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 0}
-  playerRigidbody: {fileID: 3055515677098488693}
+  collectedNotes: []
+  noteOffset: 10
+  moveDuration: 0.01
