@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dca0b6abded6410e85b9b4dbd90431c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 5000
-  horizontalSpeed: 5000
+  roadSpeed: 100
+  horizontalSpeed: 5
+  playerScale: 0
+  groundScale: 0
+  movementLimitX: 0
