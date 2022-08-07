@@ -30,10 +30,12 @@ public class MusicNoteUpgrade : MonoBehaviour
     private void ChangeColor()
     {
         gameObject.GetComponent<Renderer>().material.color = Color.green;
+        upgradeLevel += 1;
     }
 
     private void AddDissolveEffect()
     {
-        gameObject.GetComponent<Renderer>().material = GameObject.Find("DissolveEffect").GetComponent<Renderer>().material;
+        gameObject.GetComponent<Renderer>().material.shader = GameObject.Find("DissolveEffect").GetComponent<Renderer>().material.shader;
+        upgradeLevel += 1;
     }
 }
