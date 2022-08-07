@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - MusicNote
+  - Mix
+  - Master
   layers:
   - Default
   - TransparentFX
